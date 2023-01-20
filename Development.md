@@ -69,3 +69,4 @@ Preenchimento login → requisição → identificação da senha e usuários ob
 * As variáveis de ambiente devem seguir o modelo de .env.exemple;
 * O front só fica visivel <b>depois da criação /matches e /leaderboard</b>.
 * Todos os commits devem ser realizados no diretório raíz.
+* <b>npm run db:reset</b> retorna o Banco de dados ao estado inicial.
