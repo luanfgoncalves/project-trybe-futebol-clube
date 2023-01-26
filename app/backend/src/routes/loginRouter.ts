@@ -1,9 +1,10 @@
 import * as express from 'express';
-import authenticate from '../controllers/userController';
+import loginAuth from '../controllers/userController';
+import loginValidation from '../Middlewares/loginValidation';
 
 const loginRouter = express.Router();
 
 // Rotas:
-loginRouter.post('/', authenticate);
+loginRouter.post('/', loginValidation, loginAuth);
 
 export default loginRouter;

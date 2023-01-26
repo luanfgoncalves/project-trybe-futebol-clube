@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import authenticateToken from '../services/userService';
 
-const authenticate = async (req:Request, res:Response, next:NextFunction) => {
+// verifica os tokens via jwt - chamado em loginRouter
+const loginAuth = async (req:Request, res:Response, next:NextFunction) => {
   try {
     const { email, password } = req.body;
 
@@ -13,4 +14,4 @@ const authenticate = async (req:Request, res:Response, next:NextFunction) => {
   }
 };
 
-export default authenticate;
+export default loginAuth;
