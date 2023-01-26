@@ -10,7 +10,7 @@ type Login = {
 type ResType = {
   type?:'USER_NOT_FOUND',
   token?:string,
-}
+};
 
 const authenticateToken = async ({ email, password }:Login): Promise<ResType> => {
   const user = await User.findOne({
@@ -25,7 +25,7 @@ const authenticateToken = async ({ email, password }:Login): Promise<ResType> =>
   if (!isPassEqual) return { type: 'USER_NOT_FOUND' };
 
   const tokenCreated = createToken(email);
-  return {token: tokenCreated };
+  return { token: tokenCreated };
 };
 
 export default authenticateToken;
