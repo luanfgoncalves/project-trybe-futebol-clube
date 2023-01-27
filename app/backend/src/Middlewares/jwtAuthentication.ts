@@ -2,8 +2,13 @@ import * as jwt from 'jsonwebtoken';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'seusecretdetoken';
 
-const createToken = (email:string) => {
-  const payload = { email };
+type UserToken = {
+  email:string,
+  role:string,
+};
+
+const createToken = (email:string, role:string) => {
+  const payload = { email, role };
   const token = jwt.sign(payload, JWT_SECRET, { algorithm: 'HS256', expiresIn: '15min' });
   return token;
 };
@@ -17,5 +22,11 @@ const authenticateToken = (token:string) => {
   }
 };
 
+const tokenDecoder = (token:string) => {
+  const decodedToken = jwt.decode(token);
+
+  return decodedToken as UserToken;
+};
+
 export default createToken;
-export { authenticateToken };
+export { authenticateToken, tokenDecoder };
