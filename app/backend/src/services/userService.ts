@@ -24,7 +24,7 @@ const authenticateToken = async ({ email, password }:Login): Promise<ResType> =>
 
   if (!isPassEqual) return { type: 'USER_NOT_FOUND' };
 
-  const tokenCreated = createToken(email);
+  const tokenCreated = createToken(email, user.role);
   return { token: tokenCreated };
 };
 

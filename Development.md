@@ -43,11 +43,37 @@ Aprovação em recuperação: 32 Requisitos
 
 <b>Sequelize:</b>
 
+* Quaisquer execução referente ao sequelize-cli deve ser realizada dentro do diretório app/backend.
 * Sequelize será usado pro banco, é preciso criar as migrations e models.
 * Não exclua a migration já criado e siga o modelo para futura migrations.
 * Não utilize <b>Sequelize-cli init</b>(para criar as migrations), elas já estão criadas só precisam ser alteradas.
 * Assim que criar uma migration você deve <b>renomear a seeder correspondente retirando o underline (_)</b> ao fim dela, assim o script db:reset vai usá-la nos testes e você se certificará se sua migration funcionou como o esperado.
 * Quaisquer execução referente ao sequelize-cli deve ser realizada dentro do diretório app/backend.
+
+<b>Comandos: (devem ser executados no backend)</b>
+* Gerar de Migration:
+$ npx sequelize migration:generate --name migrationName
+
+* Gerar Migration e model:
+$ npx sequelize model:generate --name NomeDoModel --attributes nomeDoAtributo:string
+
+Nota: Os arquivos gerados através desse comando são de dificil leitura, é recomendável criar o Model a parte e então gerar a migration.
+
+* Executar Migrations:
+$ npx sequelize db:migrate
+
+* Desfazer Mirations(down):
+$ npx sequelize db:migrate:undo
+
+* Criar Seeds:
+npx sequelize seed:generate --name users
+
+* Executar seeds
+$ npx sequelize db:seed:all
+
+* Desfazer seeds
+$ npx sequelize db:seed:undo:all
+
 
 <b>NPM:</b>
 
@@ -101,42 +127,19 @@ Preenchimento login → requisição → identificação da senha e usuários ob
 * 404 Not Found
 * 500 Internal Server Error
 
-<h2>Sequelizer</h2>
-
-* Gerar de Migration:
-$ npx sequelize migration:generate --name migrationName
-
-* Gerar Migration e model:
-$ npx sequelize model:generate --name NomeDoModel --attributes nomeDoAtributo:string
-
-Nota: Os arquivos gerados através desse comando são de dificil leitura, é recomendável criar o Model a parte e então gerar a migration.
-
-* Executar Migrations:
-$ npx sequelize db:migrate
-
-* Desfazer Mirations(down):
-$ npx sequelize db:migrate:undo
-
-* Criar Seeds:
-npx sequelize seed:generate --name users
-
-* Executar seeds
-$ npx sequelize db:seed:all
-
-* Desfazer seeds
-$ npx sequelize db:seed:undo:all
-
 <h2>Comandos locais:</h2>
 
-npm run prestart - Cria o banco de dados e sobe as migrations.
-npm run start:test - Cria uma outra instancia do App na porta 3030.
-npm run drop - Deleta o Banco de Dados.
-npm run seed - Injeta os dados contidos nos seeders.
-npm run debug - Executa o servidor com nodemon.
+npm run build - Compila o projeto
+npm run db:reset - Restaura o banco de dados a sua condição original
 
-npx sequelize-cli db:drop - Deleta o Banco de Dados
-npx sequelize-cli db:create && npx sequelize-cli db:migrate - Gera DB e cria tabelas
-npx sequelize-cli db:seed:all - Insere dados e popula a tabela
+npm run compose:up:dev - sobe o projeto como dev
+
+docker ps -a - Lista os containers em execução
+docker exec -ti container_name sh - acessa o terminal interno ao container
+
+
+npm test - Avalia os testes localmente - Deve ser realizada na <b>Raiz do projeto</b>
+npm run test:coverage - Avalia a cobertura dos testes
 
 <b> Sobre o Banco de Dados:</b>
 
