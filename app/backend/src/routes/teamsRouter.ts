@@ -6,6 +6,6 @@ import getTeams from '../controllers/teamsController';
 const teamsRouter = express.Router();
 
 // Rotas:
-loginRouter.get('/', getTeams);
+teamsRouter.get('/', getTeams);
 
 export default teamsRouter;
