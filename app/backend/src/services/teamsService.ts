@@ -5,4 +5,10 @@ const getAllTeams = async () => {
   return teams;
 };
 
+const getSingleTeam = async (id:string) => {
+  const team = await Teams.findOne({ where: { id } });
+  return team;
+};
+
 export default getAllTeams;
+export { getSingleTeam };
