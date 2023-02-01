@@ -36,5 +36,21 @@ const findMatches = async (inProgress:boolean) => {
   return matches;
 };
 
+type NewMatch = {
+  homeTeamId: number,
+  awayTeamId: number,
+  homeTeamGoals: number,
+  awayTeamGoals: number,
+};
+
+const addMatches = async (newMatch:NewMatch):Promise<Matches> => {
+  const match = await Matches.create({
+    ...newMatch,
+    inProgress: true,
+  });
+
+  return match;
+};
+
 export default getAllMatches;
-export { findMatches };
+export { findMatches, addMatches };
