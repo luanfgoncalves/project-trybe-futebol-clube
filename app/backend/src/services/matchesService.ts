@@ -49,6 +49,7 @@ type MatchType = {
   match?:Matches,
 };
 
+// Erro na vdai
 const addMatches = async (newMatch:NewMatch):Promise<MatchType> => {
   const homeTeam = await getSingleTeam(newMatch.homeTeamId.toString());
   if (!homeTeam) return { type: 'TEAM_NOT_FOUND' };

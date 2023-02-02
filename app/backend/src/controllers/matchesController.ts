@@ -19,6 +19,7 @@ const getMatches = async (req: Request, res: Response, _next: NextFunction) => {
   return res.status(200).json(matchesInProgress);
 };
 
+// não tá funcionando :/
 const addedMatches = async (req: Request, res: Response, _next: NextFunction) => {
   const matches = await addMatches(req.body);
 
