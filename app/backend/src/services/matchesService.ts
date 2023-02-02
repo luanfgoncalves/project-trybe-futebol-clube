@@ -71,5 +71,13 @@ const finishedMatch = async (id:string) => {
   return match;
 };
 
+// retorna partidas não finalizadas
+const ongoingMatch = async (id:string, body:NewMatch) => {
+  const { homeTeamGoals, awayTeamGoals } = body;
+  const match = await Matches.update({ homeTeamGoals, awayTeamGoals }, { where: { id } });
+
+  return match;
+};
+
 export default getAllMatches;
-export { findMatches, addMatches, finishedMatch };
+export { findMatches, addMatches, finishedMatch, ongoingMatch };

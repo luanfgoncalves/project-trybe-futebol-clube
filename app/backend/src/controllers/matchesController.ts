@@ -1,5 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
-import getAllMatches, { findMatches, addMatches, finishedMatch } from '../services/matchesService';
+import getAllMatches, {
+  findMatches,
+  addMatches,
+  finishedMatch,
+  ongoingMatch,
+} from '../services/matchesService';
 
 const getMatches = async (req: Request, res: Response, _next: NextFunction) => {
   if (req.query.inProgress === undefined) {
@@ -33,5 +38,12 @@ const finishMatch = async (req: Request, res: Response, _next: NextFunction) => 
   return res.status(200).json({ message: 'Finished' });
 };
 
+const setOngoingMatch = async (req: Request, res: Response, _next: NextFunction) => {
+  const { id } = req.params;
+  const result = await ongoingMatch(id, req.body);
+
+  return res.status(200).json(result);
+};
+
 export default getMatches;
-export { addedMatches, finishMatch };
+export { addedMatches, finishMatch, setOngoingMatch };
