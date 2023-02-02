@@ -1,9 +1,9 @@
 import * as express from 'express';
 import tokenValidation from '../Middlewares/tokenValidation';
-import { addedMatches } from '../controllers/matchesController';
+import getMatches, { addedMatches } from '../controllers/matchesController';
 // import loginAuth, { tokenValidation } from '../controllers/userController';
 // import loginValidation from '../Middlewares/loginValidation';
-import getMatches from '../controllers/teamsController';
+// import getMatches from '../controllers/matchesController';
 
 const matchesRouter = express.Router();
 
