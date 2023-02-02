@@ -17,7 +17,13 @@ const getMatches = async (req: Request, res: Response, _next: NextFunction) => {
 const addedMatches = async (req: Request, res: Response, _next: NextFunction) => {
   const matches = await addMatches(req.body);
 
-  return res.status(201).json(matches);
+  if (matches.type === 'TEAM_NOT_FOUND') {
+    return res
+      .status(404)
+      .json({ message: 'The is no team with such id' });
+  }
+
+  return res.status(201).json(matches.match);
 };
 
 const finishMatch = async (req: Request, res: Response, _next: NextFunction) => {
