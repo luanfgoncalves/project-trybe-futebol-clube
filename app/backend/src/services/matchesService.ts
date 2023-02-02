@@ -52,5 +52,12 @@ const addMatches = async (newMatch:NewMatch):Promise<Matches> => {
   return match;
 };
 
+// retorna somente matches já finalizados
+const finishedMatch = async (id:string) => {
+  const match = await Matches.update({ inProgress: false }, { where: { id } });
+
+  return match;
+};
+
 export default getAllMatches;
-export { findMatches, addMatches };
+export { findMatches, addMatches, finishedMatch };
