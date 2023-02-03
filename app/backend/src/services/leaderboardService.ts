@@ -1,8 +1,8 @@
 import * as _ from 'lodash';
 import Matches from '../database/models/matchesModel';
 import Teams from '../database/models/teamsModel';
-import { findMatches } from './matchesService';
 import getAllTeams from './teamsService';
+import { findMatches } from './matchesService';
 
 // {
 //   "name": "Santos",
